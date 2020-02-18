@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
-let ReviewModel = mongoose.Schema({
+let ReviewModel = new mongoose.Schema({
     orderId: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Order'
     },
     sellerId: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
     quantity: {
@@ -17,4 +17,4 @@ let ReviewModel = mongoose.Schema({
     }
 });
 
-module.export  = mongoose.model('Review', ReviewModel)
+module.exports  = mongoose.model('Review', ReviewModel)
