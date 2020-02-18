@@ -20,6 +20,7 @@ router.route('/').get(function(req, res) {
 
 router.route('/login').post(
     function(req, res){
+        console.log(req.body)
         if(!req | !req.body.username | !req.body.password){
             return res.status(200).json({ Success : false, "Error" : "Bad Request bhai"})
         }
@@ -27,16 +28,16 @@ router.route('/login').post(
         userModel.findOne({'username' : req.body.username}).then(
             userReturned => {
                 if(!userReturned){
-                    return res.status(400).json({ Success : false, error : "Username Not Found"})
+                    return res.status(200).json({ Success : false, error : "Username Not Found"})
                 }
 
                 bcrypt.compare(req.body.password, userReturned.password).then(
                     match => {
                         if(match){
-                            return res.status(400).json({ Success : true, user_id : userReturned._id, name : userReturned.name})
+                            return res.status(200).json({ Success : true, user_id : userReturned._id, name : userReturned.name})
                         }
                         else {
-                            return res.status(400).json({ Success : false, error : "Password Incorrect"})
+                            return res.status(200).json({ Success : false, error : "Password Incorrect"})
                         }
                     }
                 )
