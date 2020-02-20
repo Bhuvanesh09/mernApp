@@ -23,12 +23,15 @@ router.route('/list').get(
     }
 )
 
-router.route('/listbyuser').get(
+router.route('/listbyuser').post(
     (req, res) => {
+        console.log("Searching for")
+        console.log(req.body)
         orderModel.find({userId : req.body.userId})
         .populate('productId')
         .then(
             x => {
+                console.log(x)
                 return res.json(x)
             }
         )
