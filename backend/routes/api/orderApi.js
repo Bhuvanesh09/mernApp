@@ -43,13 +43,19 @@ router.route('/listbyuser').get(
 router.route('/add').post(
     (req, res) => {
         data = req.body;
-        if(data.sellerId == undefined || data.name == undefined){
+        console.log("Order add request")
+        console.log(data)
+        if(data.productId == undefined || data.userId == undefined || data.quantity == undefined){
+            console.log("Undefined Value Error")
             return res.send("Error: Data Insufficient")
         }
 
         p = new orderModel(data);
         p.save()
-                .then(x => res.send("Product Added"))
+                .then(x => {
+                    console.log("Order Request Processed Successfully")
+                    res.status(200).JSON({success : "Order Successfully Added"})
+                })
                 .catch(x => res.status(400).json({error : x}))
     }
 )

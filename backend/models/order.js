@@ -11,9 +11,6 @@ let OrderModel = new mongoose.Schema({
     },
     quantity: {
         type: String
-    },
-    status: {
-        type: String
     }
 });
 

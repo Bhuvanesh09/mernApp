@@ -42,9 +42,10 @@ router.route('/listbyseller').get(
 router.route('/add').post(
     (req, res) => {
         data = req.body;
+        console.log(data)
         if(data.sellerId == undefined || data.name == undefined){
             
-            return res.send(req.body)
+            return res.send("Parameters Incorrect")
         }
 
         p = new productModel(data);
@@ -65,7 +66,7 @@ router.route('/update').post(
 
 router.route('/details/:id').get(
     (req, res) => {
-        productModel.find({_id : req.params.productId})
+        productModel.findOne({_id : req.params.id})
         .then(
             x => res.json(x)
         )
