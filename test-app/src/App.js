@@ -12,12 +12,17 @@ import {Nav, Navbar, NavDropdown, Container, Row} from "react-bootstrap"
 import ProductListing from './components/ProductListing';
 import ProductListingAll from './components/ProductListingAll'
 import ProductDispatched from './components/ProductDispatched';
+import VendorReview from './components/VendorReviews'
 
 function LogoutFunc(){
   return function() {
   localStorage.setItem('loggedIn', false)
   window.location.href = '/login';
   }
+}
+
+function retSelfRev(){
+  return "/reviews/" + localStorage.userId
 }
 
 function renderLogin(){
@@ -35,6 +40,7 @@ function renderLogin(){
         <NavDropdown.Item href="/product/add">Add Product</NavDropdown.Item>
         <NavDropdown.Item href="/product/listing">Products Placed</NavDropdown.Item>
         <NavDropdown.Item href="/product/listDispatched">Products Dispatched</NavDropdown.Item>
+        <NavDropdown.Item href={retSelfRev()} >My Reviews</NavDropdown.Item>
         <NavDropdown.Divider />
         <NavDropdown.Item href="/product/listAll">All My Products</NavDropdown.Item>
       </NavDropdown>
@@ -81,6 +87,7 @@ class App extends Component {
           <Route path='/product/listing' component={ProductListing} />
           <Route path='/product/listAll' component={ProductListingAll} />
           <Route path='/product/listDispatched' component={ProductDispatched} />
+          <Route path='/reviews/:id' component={VendorReview}/>
 
 
       </Router>

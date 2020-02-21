@@ -72,7 +72,7 @@ class ProductAdd extends Component {
     else return(
       <Row>
       <Col xs={3}></Col>
-      <Col xs={6}><Alert variant="primary">Kindly register as a Seller to enable this feature.</Alert>
+      <Col xs={6}><br/><Alert variant="primary">Kindly register as a Seller to enable this feature.</Alert>
       </Col>
     </Row>
     )

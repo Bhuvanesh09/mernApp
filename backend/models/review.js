@@ -5,14 +5,10 @@ let ReviewModel = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Order'
     },
-    sellerId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+    rating: {
+        type: Number
     },
-    quantity: {
-        type: String
-    },
-    status: {
+    review: {
         type: String
     }
 });

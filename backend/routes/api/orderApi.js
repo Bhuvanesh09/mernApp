@@ -74,7 +74,7 @@ router.route('/update').post(
 
 router.route('/details/:id').get(
     (req, res) => {
-        orderModel.find({_id : req.params.orderId})
+        orderModel.find({_id : req.params.id})
         .populate({ path: 'productId', populate: { path: 'sellerId', model: 'User' } })
         .populate('userId')
         .then(

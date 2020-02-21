@@ -30,7 +30,9 @@ class Market extends Component{
       this.setState({ [e.target.name]: e.target.value });
     };
   
-
+    retVendRev(id) {
+      return "/reviews/" + id
+    }
     returnCards() {
        let cards = []
       // console.log(this.productInfo)
@@ -49,7 +51,7 @@ class Market extends Component{
                 Total {product.reqQuant} req for dispatch. <br/>
                 <b>Remaining : {product.reqQuant - product.currentQuant}</b>
                 <br/>
-                Sold By : <b>{product.sellerId.name}</b>
+                Sold By : <a style={{color: "white"}} href={this.retVendRev(product.sellerId._id)}><b>{product.sellerId.name}</b> </a>
               
               
               </Card.Text>

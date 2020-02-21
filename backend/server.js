@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const userApi = require('./routes/api/userApi')
 const productApi = require('./routes/api/productApi')
 const orderApi = require('./routes/api/orderApi')
+const reviewApi = require('./routes/api/reviewApi')
 
 const app = express();
 app.get('/', (req, res) => res.send('Hello world!'));
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use('/api/userApi', userApi)
 app.use('/api/productApi', productApi)
 app.use('/api/orderApi', orderApi)
+app.use('/api/reviewApi', reviewApi )
 
 //Connect database
 connectDatabase()
