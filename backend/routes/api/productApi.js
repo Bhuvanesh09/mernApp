@@ -10,6 +10,7 @@ router.route('/test').get(
 router.route('/list').get(
     (req, res) => {
         productModel.find()
+        .populate("sellerId")
         .then(
             x => {
                 return res.json(x)
@@ -23,7 +24,7 @@ router.route('/list').get(
     }
 )
 
-router.route('/listbyseller').get(
+router.route('/listbyseller').post(
     (req, res) => {
         productModel.find({sellerId : req.body.sellerId})
         .then(
